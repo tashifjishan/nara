@@ -1,0 +1,19 @@
+Products:
+findById
+
+Cart
+* crud
+
+user address:
+* it must be also a subdocument as we have to delete a specific address
+* By pincode fetch state and country and all the valid city names: 
+https://api.postalpincode.in/pincode/845105
+
+protect routes
+
+better error handling
+appError class
+catchAsync
+
+
+

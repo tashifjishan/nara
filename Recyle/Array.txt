@@ -1,0 +1,29 @@
+# Increment the quantity:
+
+ db.users.findOneAndUpdate({name: "tashif"}, {$inc: {"cart.$[cartItem].quantity": 1}}, {arrayFilters: [{"cartItem.productId": "456"}]})
+
+# Push an item
+
+db.users.findOneAndUpdate({name: "tashif"}, {$push: {cart: {productId: "456", size: "L"}}})
+
+# Delete
+
+db.users.findOneAndUpdate({name: "tashif"}, {$pull: {cart: {productId: "heythere"}}})
+
+
+# Multiple array filters: 
+
+findOneAndUpdate(
+  { _id: userId }, // Match the user by their userId
+  {
+    $inc: { "cart.$[cartElem].quantity": 1 }, // Increment quantity in cart
+    $set: { "wishlist.$[wishlistElem].size": "L" } // Change size in wishlist
+  },
+  {
+    arrayFilters: [
+      { "cartElem.productId": productId, "cartElem.size": size }, // Filter for cart item
+      { "wishlistElem.productId": "456ID" } // Filter for wishlist item
+    ],
+    new: true  // Return the updated document
+  }
+)

@@ -1,0 +1,14 @@
+const updateResult = await User.findOneAndUpdate(
+  { _id: userId }, // Match the user by their userId
+  {
+    $inc: { "cart.$[cartElem].quantity": 1 }, // Increment quantity in cart
+    $set: { "wishlist.$[wishlistElem].size": "L" } // Change size in wishlist
+  },
+  {
+    arrayFilters: [
+      { "cartElem.productId": productId, "cartElem.size": size }, // Filter for cart item
+      { "wishlistElem.productId": "456ID" } // Filter for wishlist item
+    ],
+    new: true  // Return the updated document
+  }
+);
