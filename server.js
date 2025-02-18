@@ -34,11 +34,21 @@ app.get("/allusers", async(req, res, error)=>{
 })
 app.use("/images", express.static(path.join(__dirname, "images")))
 
-mongoose
-  .connect("mongodb+srv://jishantales:mqh9nx6XHfriu3fL@cluster0.gk2h3.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
-  .then(() => console.log("connected to the database successfully!"))
-  .catch((err) => console.log(err));
+let isConnected = false; // Track connection status
 
+mongoose
+  .connect("mongodb+srv://jishantales:mqh9nx6XHfriu3fL@cluster0.gk2h3.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    maxPoolSize: 50, 
+  })
+  .then(() => {
+    if (!isConnected) {
+      console.log("First-time connection to MongoDB");
+      isConnected = true;
+    }
+  })
+  .catch((err) => console.error("MongoDB connection error:", err));
 
 app.get("/", (req, res) => {
   res.status(200).json({
