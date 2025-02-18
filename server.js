@@ -17,7 +17,7 @@ const app = express();
 app.use(cookieParser())
 app.use(express.json())
 const corsOptions = {
-  origin: 'https://coruscating-lebkuchen-4f050c.netlify.app',
+  origin: 'https://nara-tashif.netlify.app',
   credentials: true,
 };
 
