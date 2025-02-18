@@ -53,7 +53,7 @@ mongoose
 app.get("/", (req, res) => {
   res.status(200).json({
     status: "OK",
-    message: "Welcome to Nara! Redeployed! and again and again",
+    message: "mongodb welcomes you",
   });
 });
 
