@@ -29,7 +29,7 @@ const createSendToken = async (user, req, res) => {
         expires: Date.now() + 90 * 24 * 60 * 60 * 1000,
         httpOnly: true,        
         secure: true, 
-        sameSite: 'None'
+        sameSite: 'lax'
     });
     
     user.password = undefined;
