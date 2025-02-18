@@ -17,7 +17,7 @@ const app = express();
 app.use(cookieParser())
 app.use(express.json())
 const corsOptions = {
-  origin: 'https://nara-tashif.netlify.app',
+  origin: 'https://nara-front.vercel.app',
   credentials: true,
 };
 
