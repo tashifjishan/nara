@@ -24,7 +24,14 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.use(mongoSanitize())
-
+app.get("/allusers", async(req, res, error)=>{
+  try {
+    const all = await User.find()
+    res.send(all)
+  } catch (error) {
+    next(error)
+  }
+})
 app.use("/images", express.static(path.join(__dirname, "images")))
 
 mongoose
