@@ -26,9 +26,9 @@ const createSendToken = async (user, req, res) => {
         expiresIn: Date.now() + 90 * 24 * 60 * 60 * 1000
     });
     res.cookie("jwt", token, {
-        expires: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000),
+        expires: Date.now() + 90 * 24 * 60 * 60 * 1000,
         httpOnly: true,        
-        secure: false, 
+        secure: true, 
         sameSite: 'None'
     });
     
