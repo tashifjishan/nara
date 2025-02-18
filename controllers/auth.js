@@ -105,8 +105,8 @@ exports.login = async (req, res, next) => {
 
         if (!user) throw new AppError("Invalid Credential!", 401)
 
-        // const correctPassword = await bcrypt.compare(password, user.password)
-        const correctPassword = true
+        const correctPassword = await bcrypt.compare(password, user.password)
+        
         console.log("Correct Password: ", correctPassword)
         
         // if (correctPassword) createSendToken(user, req, res)
