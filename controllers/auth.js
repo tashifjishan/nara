@@ -109,8 +109,8 @@ exports.login = async (req, res, next) => {
         const correctPassword = true
         console.log("Correct Password: ", correctPassword)
         
-        // if(correctPassword) res.status(200).json({status: "OK", message: "login successful!"})
-        if (correctPassword) createSendToken(user, req, res)
+        // if (correctPassword) createSendToken(user, req, res)
+        if(correctPassword) res.status(200).json({status: "OK", message: "login successful!"})
         else throw new AppError("Invalid Credential!", 401)
     } catch (error) {
         next(error)
