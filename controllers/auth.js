@@ -26,10 +26,10 @@ const createSendToken = async (user, req, res) => {
         expiresIn: Date.now() + 90 * 24 * 60 * 60 * 1000
     });
     res.cookie("jwt", token, {
-        expires: Date.now() + 90 * 24 * 60 * 60 * 1000,
+        expires: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000),
         httpOnly: true,        
         secure: true, 
-        sameSite: 'lax'
+        sameSite: 'None'
     });
     
     user.password = undefined;
