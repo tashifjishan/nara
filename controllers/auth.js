@@ -23,10 +23,10 @@ const sendVerificationMail = async (user) => {
 const createSendToken = async (user, req, res) => {
    try {
     const token = jwt.sign({ id: user._id }, process.env.SECRET_KEY, {
-        expiresIn: Date.now() + process.env.JWT_EXPIRES_IN * 24 * 60 * 60 * 1000
+        expiresIn: Date.now() + 90 * 24 * 60 * 60 * 1000
     });
     res.cookie("jwt", token, {
-        expires: new Date(Date.now() + process.env.JWT_EXPIRES_IN * 24 * 60 * 60 * 1000),
+        expires: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000),
         httpOnly: true,
         // secure: req.secure || req.headers['x-forwarded-proto'] === 'https' 
     });
