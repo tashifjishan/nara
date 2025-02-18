@@ -27,8 +27,9 @@ const createSendToken = async (user, req, res) => {
     });
     res.cookie("jwt", token, {
         expires: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000),
-        httpOnly: true,        
-        sameSite: 'None',      
+        httpOnly: true,        // Ensures the cookie can't be accessed via JavaScript
+        secure: req.secure || req.headers['x-forwarded-proto'] === 'https',  // Ensures cookie is only sent over HTTPS
+        sameSite: 'Strict',      // Required for cross-site cookies
     });
     
     user.password = undefined;
