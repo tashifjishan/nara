@@ -35,7 +35,7 @@ app.get("/allusers", async(req, res, error)=>{
 app.use("/images", express.static(path.join(__dirname, "images")))
 
 mongoose
-  .connect(process.env.MONGO_URI)
+  .connect("mongodb+srv://jishantales:mqh9nx6XHfriu3fL@cluster0.gk2h3.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
   .then(() => console.log("connected to the database successfully!"))
   .catch((err) => console.log(err));
 
